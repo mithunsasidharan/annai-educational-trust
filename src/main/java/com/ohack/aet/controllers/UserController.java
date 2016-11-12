@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ohack.aet.model.TrainingEvent;
 import com.ohack.aet.model.User;
+import com.ohack.aet.repository.EventSearchMongoRepository;
 import com.ohack.aet.repository.UserMongoRepository;
 
 @Controller
@@ -18,9 +20,20 @@ public class UserController {
 
 	@Autowired
 	UserMongoRepository userRepository;
+	
+	@Autowired
+	EventSearchMongoRepository eventSearchRepository;
 
 	@RequestMapping("/home")
 	public String home(Model model) {
+		
+		//Load data of upcoming events
+		List<TrainingEvent> upcomimgEvents = getUpComingEvents();
+		int count =1 ;
+		for(TrainingEvent event: upcomimgEvents){
+			model.addAttribute("event" + count, event);
+			count++;
+		}
 		return "home";
 	}
 
@@ -95,6 +108,12 @@ public class UserController {
 
 		return "register";
 
+	}
+
+	public List<TrainingEvent> getUpComingEvents() {
+
+		List<TrainingEvent> upComingEvents = eventSearchRepository.findUpcomingEvents();
+		return upComingEvents;
 	}
 
 }
