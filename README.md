@@ -27,9 +27,8 @@ The platform also provides details about the NGO, Annai Educational Trust which 
 
 ## Application Tech Stack
 
-``` bash
 We're intending to develop this application over Spring MVC as web framework, Mongo DB as database and HTML/CSS/JS for front end. We intend to build the application in a single component deployment model considering the maintainability aspect of application since the NGO trustees are from non IT background.
-```
+
 
 ## Team Members
 
