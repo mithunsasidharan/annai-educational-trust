@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
    <head>
       <title>Bootstrap Case</title>
       <meta charset="utf-8"/>
@@ -18,7 +19,7 @@
                         id="login-tab">
                         <h4 class="text-gray mt-0 pt-5"> Login</h4>
                         <p>Enter Adhar No and password to login.</p>
-                        <form action="/login" method="POST">
+                         <form action="/login" method="POST"  name="log" class="log" onsubmit="return validateForm()">
                            <div class="row ">
                               <div class="form-group col-md-6 ">
                                  <label for="form_adhar_no">Adhar No</label>
@@ -54,6 +55,19 @@
                            </div>
                            </div>
                         </form>
+                        <div>
+                        <p style="color : #FF0000" th:text = "${loginFailed}"></p>
+                        </div>
+                       <script type="text/javascript">
+                        function validateForm(){
+                           var x=document.log.aadharNo.value;
+                           var y=document.log.password.value;
+                           if (x == null || x=="" || y == null || y=="") {
+                              alert("None of the field can be empty");
+                              return false;
+                           };
+                        };
+              </script>
                      </div>
                        
                         </div>

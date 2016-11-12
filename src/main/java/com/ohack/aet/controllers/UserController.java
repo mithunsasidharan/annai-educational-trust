@@ -29,33 +29,37 @@ public class UserController {
 		return "login";
 	}
 
+	@RequestMapping("/logout")
+	public String logout(Model model) {
+		model.addAttribute("authenticated", false);
+		return "home";
+	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(Model model, @ModelAttribute User user) {
 
-		List<String> errorMsg = new ArrayList<String>();
 		String pageName = "login";
 
 		// find the user
-		if (user != null && user.getAadharNo() != null) {
+		if (user != null && user.getAadharNo() != null && user.getPassword() != null) {
 			User userFound = userRepository.findOne(user.getAadharNo());
-			if(userFound!=null){
-				System.out.println(userFound.toString());
+			if (userFound != null) {
+				if (userFound.getPassword().equals(user.getPassword())) {
+					System.out.println(userFound.toString());
+					// TODO add check on password
+					model.addAttribute("authenticated", true);
+					pageName = "home";
+				} else {
+					model.addAttribute("loginFailed", "Password IS Incorrect");
+				}
+			} else {
+				model.addAttribute("loginFailed", "User does not exist");
 			}
-			
-			// FIX ME
-			pageName = "home";
-			/*
-			 * if (userFound.getPassword().equals(user.getPassword())) {
-			 * pageName = "home"; } else { errorMsg.add("Password is Incorrect"
-			 * ); }
-			 */
 
 		} else {
 
-			errorMsg.add("Aadhar ID cannot be empty");
+			model.addAttribute("loginFailed", "AadharNo or Password is empty");
 		}
-
-		model.addAttribute("errors", errorMsg);
 
 		return pageName;
 
@@ -70,6 +74,9 @@ public class UserController {
 		// find the user
 		if (user != null && user.getAadharNo() != null) {
 			userRepository.save(user);
+			model.addAttribute("authenticated", true);
+
+			System.out.println("User authenticated");
 			pageName = "home";
 
 		} else {
