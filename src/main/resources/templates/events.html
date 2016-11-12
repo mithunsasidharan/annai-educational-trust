@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Events</title>
+		<style>
+			table, th, td {
+			   border: 1px solid black;
+			   border-spacing: 0px;
+			}
+			th, td {
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>EventName</th>
+					<th>Duration</th>
+					<th>Description</th>
+					<th>Stipend</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="car : ${eventList}">
+					<td th:text="${car.eventName}"></td>
+					<td th:text="${car.duration}"></td>
+					<td th:text="${car.description}"></td>
+					<td th:text="${car.stipend}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+		<h2>Add Event</h2>
+		<form action="/addEvent" method="POST">
+			eventName <input type="text" id="eventName" name="eventName" /><br />
+			duration <input type="text" id="duration" name="duration" /><br />
+			<input type="submit" />
+		</form>
+		<br /> 
+	</body>
+</html>

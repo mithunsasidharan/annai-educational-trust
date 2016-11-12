@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="ngopress - Nonprofit, Crowdfunding & Charity HTML5 Template" />
+<meta name="keywords" content="charity,crowdfunding,nonprofit,orphan,Poor,funding,fundrising,ngo,children" />
+<meta name="author" content="ThemeMascot" />
+
+<!-- Page Title -->
+<title>Annai Educational Trust</title>
+
+<!-- Favicon and Touch Icons -->
+<link href="images/favicon.png" rel="shortcut icon" type="image/png">
+<link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+<link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+<link href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+
+<!-- Stylesheet -->
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+<link href="css/css-plugin-collections.css" rel="stylesheet"/>
+<!-- CSS | menuzord megamenu skins -->
+<link id="menuzord-menu-skins" href="css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet"/>
+<!-- CSS | Main style file -->
+<link href="css/style-main.css" rel="stylesheet" type="text/css">
+<!-- CSS | Preloader Styles -->
+<link href="css/preloader.css" rel="stylesheet" type="text/css">
+<!-- CSS | Custom Margin Padding Collection -->
+<link href="css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+<!-- CSS | Responsive media queries -->
+<link href="css/responsive.css" rel="stylesheet" type="text/css">
+<!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+<!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
+
+<!-- Revolution Slider 5.x CSS settings -->
+<link  href="js/revolution-slider/css/settings.css" rel="stylesheet" type="text/css"/>
+<link  href="js/revolution-slider/css/layers.css" rel="stylesheet" type="text/css"/>
+<link  href="js/revolution-slider/css/navigation.css" rel="stylesheet" type="text/css"/>
+
+<!-- CSS | Theme Color -->
+<link href="css/colors/theme-skin-blue.css" rel="stylesheet" type="text/css">
+
+<!-- external javascripts -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- JS | jquery plugin collection for this theme -->
+<script src="js/jquery-plugin-collection.js"></script>
+
+<!-- Revolution Slider 5.x SCRIPTS -->
+<script src="js/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script src="js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+
+</head>
+
+<form action="/login" method="get" id="loginNow"></form>
+  <script type="text/javascript">
+  function login(){
+	  $('#loginNow').submit();
+  }
+  </script>
+<form action="/register" method="get" id="registerNow"></form>
+  <script type="text/javascript">
+  function register(){
+	  $('#registerNow').submit();
+  }
+  </script>
+  
+  <form action="/logout" method="get" id="logoutNow"></form>
+  <script type="text/javascript">
+  function logout(){
+	  $('#logoutNow').submit();
+  }
+  </script>
+  
+<body class="">
+<div id="wrapper" class="clearfix">
+  
+		<!-- Header -->
+		<header id="header" class="header">
+			<div
+				class="header-nav navbar-fixed-top header-dark navbar-white navbar-transparent bg-transparent-1 navbar-sticky-animated animated-active">
+				<div class="header-nav-wrapper">
+					<div class="container">
+						<nav id="menuzord-right" class="menuzord default no-bg">
+							<a class="menuzord-brand pull-left flip"
+								href="index-mp-layout1.html"><img src="images/logo-wide.png"
+								alt=""></a>
+							<a class="menuzord-brand pull-left flip" style="color: white;">Women Emporment</a>
+							<div th:unless="${authenticated}">
+								<ul class="menuzord-menu onepage-nav pull-right" >
+									<li class="active"><a href="#home">Home</a></li>
+									<li><a href="#blog">Events</a></li>
+									<li><a href="#" onclick="javascript:login()">Login</a></li>
+									<li><a href="#" onclick="javascript:register()">Register</a></li>
+									<li><a href="#about">About</a></li>
+									<li><a href="#contact">Contact</a></li>
+								</ul>
+							</div>
+							<div th:if="${authenticated}">
+								<ul class="menuzord-menu onepage-nav pull-right">
+									<li class="active"><a href="#home">Home</a></li>
+									<li><a href="#about">About</a></li>
+									<li><a href="#contact">Contact</a></li>
+									<li><a href="#" onclick="javascript:login()">Profile</a></li>
+									<li><a href="#" onclick="javascript:logout()">Logout</a></li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+  </header>
+  
+  <!-- Start main-content -->
+  <div class="main-content">
+    <!-- Section: home -->
+    <section id="home">
+      <div class="container-fluid p-0">
+        
+        <!-- Slider Revolution Start -->
+        <div class="">
+          <div class="rev_slider rev_slider_fullscreen" data-version="5.0">
+            <ul>
+
+               <li data-index="rs-1"  data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="images/bg/bg7.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide 3" data-description="">
+                <!-- MAIN IMAGE -->
+                <img src="images/bg/empower.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
+                <!-- LAYERS -->
+
+                <!-- LAYER NR. 1 -->
+                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway bg-theme-colored-transparent pr-20 pl-20"
+                  id="rs-1-layer-1"
+
+                  data-x="['right']"
+                  data-hoffset="['30']"
+                  data-y="['middle']"
+                  data-voffset="['-90']" 
+                  data-fontsize="['34']"
+                  data-lineheight="['72']"
+                  data-width="none"
+                  data-height="none"
+                  data-whitespace="nowrap"
+                  data-transform_idle="o:1;s:500"
+                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                  data-start="1000" 
+                  data-splitin="none" 
+                  data-splitout="none" 
+                  data-responsive_offset="on"
+                  style="z-index: 7; white-space: nowrap; font-weight:600;"><span class="">Annai</span> Educational Trust
+                </div>
+
+                <!-- LAYER NR. 2 -->
+                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway"
+                  id="rs-1-layer-2"
+
+                  data-x="['right']"
+                  data-hoffset="['35']"
+                  data-y="['middle']"
+                  data-voffset="['-25']" 
+                  data-fontsize="['32']"
+                  data-lineheight="['54']"
+                  data-width="none"
+                  data-height="none"
+                  data-whitespace="nowrap"
+                  data-transform_idle="o:1;s:500"
+                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                  data-start="1000" 
+                  data-splitin="none" 
+                  data-splitout="none" 
+                  data-responsive_offset="on"
+                  style="z-index: 7; white-space: nowrap; font-weight:600;">For a Better Future 
+                </div>
+            </ul>
+          </div>
+          <!-- end .rev_slider -->
+        </div>
+        <!--  Revolution slider scriopt -->
+        <!-- Slider Revolution Ends -->
+      </div>
+    </section>
+
+    <!-- Section: About  -->
+    <section id="about">
+      <div class="container">
+        <div class="section-content text-center">
+          <div class="row">
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="icon-box iconbox-theme-colored pl-0 pr-0">
+                <a href="#" class="icon icon-rounded icon-border-effect effect-rounded mb-0">
+                  <img src="images/volunteer-icon-17.jpg">
+                </a>
+                <h3 class="text-uppercase mt-20 mb-20"><a href="#">Become a Volunteer</a></h3>
+                <p class="text-gray">We appreciate volunteering. Get in touch with us to volunteer for our events and initiatives.</p>
+                <p class="text-gray">Maid ID: saastha5@gmail.com</p>
+                <p class="text-gray">Cell No: 9500570831</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="icon-box iconbox-theme-colored pl-0 pr-0">
+                <a href="#" class="icon icon-rounded icon-border-effect effect-rounded mb-0">
+                  <!-- <i class="flaticon-charity-home-insurance font-48"></i> -->
+                  <img src="images/group_icon.jpg">
+                </a>
+                <h3 class="text-uppercase mt-20 mb-20"><a href="#">Trust Details</a></h3>
+                <p class="text-gray">(REG No : 1611/2011)</p>
+                <p class="text-gray">SAASTHA INDUSTRIAL SCHOOL</p>
+                <p class="text-gray">(SCVT APPROVAL NO : 16639/2012)</p>
+                <p class="text-gray">No 27,New SankaranPalayam Road,Opp to Jagathammal Rice Mill,Sankaranpalayam,Vellore</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="icon-box iconbox-theme-colored pl-0 pr-0">
+                <a href="#" class="icon icon-rounded icon-border-effect effect-rounded mb-0">
+                  <!-- <i class="flaticon-charity-make-an-online-donation font-48"></i> -->
+                  <img src="images/donate.png">
+                </a>
+                <h3 class="text-uppercase mt-20 mb-20"><a href="#">Donate Us</a></h3>
+                <p class="text-gray">You're most welcome to donate us and be part of this great cause.</p>
+                <p class="text-gray">Cell No: 9500570831</p>
+                <p class="text-gray">Maid ID: saastha5@gmail.com</p>
+                
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: blog -->
+    <section id="blog">
+      <div class="container">
+        <div class="section-title text-center">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="text-uppercase line-bottom-center mt-0">Upcoming Events</h2>
+              <p>Some of the upcoming events</p>
+            </div>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <article class="post clearfix mb-sm-30 bg-silver-light">
+                <div class="entry-header">
+                  <div class="post-thumb thumb"> 
+                    <img src="images/blog/1.jpg" alt="" class="img-responsive img-fullwidth"> 
+                  </div>
+                </div>
+                <div class="entry-content p-20 pr-10">
+                  <div class="entry-meta media mt-0 no-bg no-border">
+                    <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                      <ul>
+                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
+                        <li class="font-12 text-white text-uppercase">Feb</li>
+                      </ul>
+                    </div>
+                    <div class="media-body pl-15">
+                      <div class="event-content pull-left flip">
+                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>       
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
+                  <div class="clearfix"></div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <article class="post clearfix mb-sm-30 bg-silver-light">
+                <div class="entry-header">
+                  <div class="post-thumb thumb"> 
+                    <img src="images/blog/2.jpg" alt="" class="img-responsive img-fullwidth"> 
+                  </div>
+                </div>
+                <div class="entry-content p-20 pr-10">
+                  <div class="entry-meta media mt-0 no-bg no-border">
+                    <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                      <ul>
+                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
+                        <li class="font-12 text-white text-uppercase">Feb</li>
+                      </ul>
+                    </div>
+                    <div class="media-body pl-15">
+                      <div class="event-content pull-left flip">
+                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
+                  <div class="clearfix"></div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <article class="post clearfix mb-sm-30 bg-silver-light">
+                <div class="entry-header">
+                  <div class="post-thumb thumb"> 
+                    <img src="images/blog/3.jpg" alt="" class="img-responsive img-fullwidth"> 
+                  </div>
+                </div>
+                <div class="entry-content p-20 pr-10">
+                  <div class="entry-meta media mt-0 no-bg no-border">
+                    <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                      <ul>
+                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
+                        <li class="font-12 text-white text-uppercase">Feb</li>
+                      </ul>
+                    </div>
+                    <div class="media-body pl-15">
+                      <div class="event-content pull-left flip">
+                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
+                  <div class="clearfix"></div>
+                </div>
+              </article>
+              <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="events.html" style="margin-left: 240px;">View All Events</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider: Contact -->
+    <section id="contact" class="divider bg-silver-light">
+      <div class="container pt-60 pb-60">      
+        <div class="section-title text-center">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="text-uppercase line-bottom-center mt-0">Contact Us</h2>
+              <p>Contact us for any feedback or queries by filling up this form !</p>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-10">
+          <div class="col-md-10 col-md-offset-1">
+            <!-- Contact Form -->
+            <form id="contact_form" name="contact_form" class="" action="includes/sendmail.php" method="post">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group mb-30">
+                    <input name="form_name" class="form-control" type="text" placeholder="Enter Name" required="">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group mb-30">
+                    <input name="form_email" class="form-control required email" type="email" placeholder="Enter Email">
+                  </div>
+                </div>
+              </div>                
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group mb-30">
+                    <input name="form_subject" class="form-control required" type="text" placeholder="Enter Subject">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group mb-30">
+                    <input name="form_phone" class="form-control" type="text" placeholder="Enter Phone">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <textarea name="form_message" class="form-control required" rows="5" placeholder="Enter Message"></textarea>
+              </div>
+              <div class="form-group">
+                <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px" data-loading-text="Please wait...">Send your message</button>
+                <button type="reset" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- end main-content -->
+
+<!-- Footer Scripts -->
+<!-- JS | Custom script for all pages -->
+<script src="js/custom.js"></script>
+
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  
+      (Load Extensions only on Local File Systems ! 
+       The following part can be removed on Server for On Demand Loading) -->
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
+
+</body>
+</html>
