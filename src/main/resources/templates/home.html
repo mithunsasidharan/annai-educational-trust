@@ -79,6 +79,25 @@
   }
   </script>
   
+    <form action="/addEvent" method="get" id="addEventNow"></form>
+  <script type="text/javascript">
+  function addEvent(){
+	  $('#addEventNow').submit();
+  }
+  </script>
+  
+ 
+ <form action="/allEvents" method="get" id="allEventsNow"></form>
+  <script type="text/javascript">
+  function allEvents(){
+	  $('#allEventsNow').submit();
+  }
+  </script>
+  
+
+  
+  
+  
 <body class="">
 <div id="wrapper" class="clearfix">
   
@@ -99,6 +118,7 @@
 									<li><a href="#blog">Events</a></li>
 									<li><a href="#" onclick="javascript:login()">Login</a></li>
 									<li><a href="#" onclick="javascript:register()">Register</a></li>
+									<li><a href="#" onclick="javascript:addEvent()">Add Event</a></li>
 									<li><a href="#about">About</a></li>
 									<li><a href="#contact">Contact</a></li>
 								</ul>
@@ -281,7 +301,7 @@
                     </div>
                     <div class="media-body pl-15">
                       <div class="event-content pull-left flip">
-                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>       
+                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#"><p th:text = "${event1.eventName}"/></a></h4>       
                       </div>
                     </div>
                   </div>
@@ -307,7 +327,7 @@
                     </div>
                     <div class="media-body pl-15">
                       <div class="event-content pull-left flip">
-                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
+                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#"><p th:text = "${event2.eventName}"/></a></h4>
                       </div>
                     </div>
                   </div>
@@ -333,7 +353,7 @@
                     </div>
                     <div class="media-body pl-15">
                       <div class="event-content pull-left flip">
-                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">Post title here</a></h4>
+                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#"><p th:text = "${event3.eventName}"/></a></h4>
                       </div>
                     </div>
                   </div>
@@ -341,7 +361,7 @@
                   <div class="clearfix"></div>
                 </div>
               </article>
-              <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="events.html" style="margin-left: 240px;">View All Events</a>
+              <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#" onclick="javascript:allEvents()" style="margin-left: 240px;">View All Events</a>
             </div>
           </div>
         </div>
