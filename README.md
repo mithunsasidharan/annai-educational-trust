@@ -31,13 +31,14 @@ We're intending to develop this application over Spring MVC as web framework, Mo
 
 
 ## Team Members
-
-Mithun Sasidharan
-Jayati Agarwal
-Shivam Agarwal
-Arshad Basha
-Niveditta
-Ashok
-Meena
-Sushanth
-Uthrah
+``` bash
+1. Mithun Sasidharan
+2. Jayati Agarwal
+3. Shivam Agarwal
+4. Arshad Basha
+5. Niveditta
+6. Ashok
+7. Meena
+8. Sushanth
+9. Uthrah
+```
