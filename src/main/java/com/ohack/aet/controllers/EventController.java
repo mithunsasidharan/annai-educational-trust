@@ -22,6 +22,7 @@ import com.ohack.aet.model.User;
 import com.ohack.aet.repository.EventMongoRepository;
 import com.ohack.aet.repository.EventSearchMongoRepository;
 import com.ohack.aet.repository.UserMongoRepository;
+import com.ohack.aet.util.SmsAlerts;
 
 @Controller
 public class EventController {
@@ -72,6 +73,17 @@ public class EventController {
 		event.setId(event.getEventName().trim()+"_"+System.currentTimeMillis());
 		System.out.println("event"+event.getId());
 		eventRepository.save(event);
+		try{
+		//Sms Alert
+		List<User> userList = eventSearchRepository.findEligibleUsers(event);
+        SmsAlerts alertObj = new SmsAlerts();
+        alertObj.sendSmsAlerts(event, userList);
+		}
+		catch(Exception ex){
+			
+		}
+
+
 		return "redirect:allEvents";
 	}
 	
