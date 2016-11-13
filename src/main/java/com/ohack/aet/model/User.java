@@ -40,9 +40,9 @@ public class User {
     
     private String maritalStatus;
     
-    private List<TrainingEvent> enrolledEvents;
+    private List<String> enrolledEvents;
     
-    private List<TrainingEvent> completedEvents;
+    private List<String> completedEvents;
     
     private List<String> skills;
     
@@ -162,19 +162,19 @@ public class User {
 		this.maritalStatus = maritalStatus;
 	}
 
-	public List<TrainingEvent> getEnrolledEvents() {
+	public List<String> getEnrolledEvents() {
 		return enrolledEvents;
 	}
 
-	public void setEnrolledEvents(List<TrainingEvent> enrolledEvents) {
+	public void setEnrolledEvents(List<String> enrolledEvents) {
 		this.enrolledEvents = enrolledEvents;
 	}
 
-	public List<TrainingEvent> getCompletedEvents() {
+	public List<String> getCompletedEvents() {
 		return completedEvents;
 	}
 
-	public void setCompletedEvents(List<TrainingEvent> completedEvents) {
+	public void setCompletedEvents(List<String> completedEvents) {
 		this.completedEvents = completedEvents;
 	}
 

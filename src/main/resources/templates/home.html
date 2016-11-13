@@ -64,6 +64,15 @@
   function login(){
 	  $('#loginNow').submit();
   }
+  $(document).ready(function(){
+	  var role = $("#role").val();
+	  //alert(role);
+	  if(role == 'A'){
+		  $("#addEventLink").show();
+	  } else {
+		  $("#addEventLink").hide();
+	  }
+  });
   </script>
 <form action="/register" method="get" id="registerNow"></form>
   <script type="text/javascript">
@@ -93,7 +102,12 @@
 	  $('#allEventsNow').submit();
   }
   </script>
-  
+  <form action="/profile" method="get" id="profileId"></form>
+  <script type="text/javascript">
+  function profile(){
+  	$('#profileId').submit();
+  }
+  </script>
 
   
   
@@ -112,23 +126,25 @@
 								href="index-mp-layout1.html"><img src="images/logo-wide.png"
 								alt=""></a>
 							<a class="menuzord-brand pull-left flip" style="color: white;">Women Emporment</a>
-							<div th:unless="${authenticated}">
+							<div th:unless="${session.authenticated}">							
 								<ul class="menuzord-menu onepage-nav pull-right" >
 									<li class="active"><a href="#home">Home</a></li>
 									<li><a href="#blog">Events</a></li>
 									<li><a href="#" onclick="javascript:login()">Login</a></li>
 									<li><a href="#" onclick="javascript:register()">Register</a></li>
-									<li><a href="#" onclick="javascript:addEvent()">Add Event</a></li>
 									<li><a href="#about">About</a></li>
 									<li><a href="#contact">Contact</a></li>
 								</ul>
 							</div>
-							<div th:if="${authenticated}">
+							<div th:if="${session.authenticated}">
 								<ul class="menuzord-menu onepage-nav pull-right">
 									<li class="active"><a href="#home">Home</a></li>
+									<li><a href="#blog">Events</a></li>
 									<li><a href="#about">About</a></li>
 									<li><a href="#contact">Contact</a></li>
-									<li><a href="#" onclick="javascript:login()">Profile</a></li>
+									<input type="hidden" th:value="${session.role}" id="role"></input>
+									<li><a href="#" id="addEventLink" onclick="javascript:addEvent()">Add Event</a></li>
+									<li><a href="#" onclick="javascript:profile()">Profile</a>
 									<li><a href="#" onclick="javascript:logout()">Logout</a></li>
 								</ul>
 							</div>
@@ -177,6 +193,33 @@
                   data-splitout="none" 
                   data-responsive_offset="on"
                   style="z-index: 7; white-space: nowrap; font-weight:600;"><span class="">Annai</span> Educational Trust
+                </div>
+                
+                <!-- Welcome user/admin -->
+                
+                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway pr-20 pl-20"
+                  id="rs-1-layer-1"
+
+                  data-x="['left']"
+                  data-hoffset="['30']"
+                  data-y="['middle']"
+                  data-voffset="['-90']" 
+                  data-fontsize="['34']"
+                  data-lineheight="['72']"
+                  data-width="none"
+                  data-height="none"
+                  data-whitespace="nowrap"
+                  data-transform_idle="o:1;s:500"
+                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                  data-start="1000" 
+                  data-splitin="none" 
+                  data-splitout="none" 
+                  data-responsive_offset="on"
+                  style="z-index: 7; white-space: nowrap; font-weight:600;"><span th:if="${session.userName != null}">Welcome </span> 
+                  <span th:text="${session.userName}"/>
                 </div>
 
                 <!-- LAYER NR. 2 -->
@@ -295,8 +338,8 @@
                   <div class="entry-meta media mt-0 no-bg no-border">
                     <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
                       <ul>
-                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                        <li class="font-12 text-white text-uppercase">Feb</li>
+                        <li class="font-16 text-white font-weight-600 border-bottom" th:text="${event1.day}"></li>
+                        <li class="font-12 text-white text-uppercase" th:text="${event1.month}"></li>
                       </ul>
                     </div>
                     <div class="media-body pl-15">
@@ -305,7 +348,7 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
+                  <p class="mt-10"> This is an Computer Training which enables to learn MSOffice Word, Excel,PowerPoint and other basic operations</p>
                   <div class="clearfix"></div>
                 </div>
               </article>
@@ -321,8 +364,8 @@
                   <div class="entry-meta media mt-0 no-bg no-border">
                     <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
                       <ul>
-                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                        <li class="font-12 text-white text-uppercase">Feb</li>
+                        <li class="font-16 text-white font-weight-600 border-bottom" th:text="${event2.day}"></li>
+                        <li class="font-12 text-white text-uppercase" th:text="${event2.month}"></li>
                       </ul>
                     </div>
                     <div class="media-body pl-15">
@@ -331,7 +374,7 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
+                  <p class="mt-10">This is a tailoring course for learning blouse ,salwar stitching </p>
                   <div class="clearfix"></div>
                 </div>
               </article>
@@ -347,8 +390,8 @@
                   <div class="entry-meta media mt-0 no-bg no-border">
                     <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
                       <ul>
-                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                        <li class="font-12 text-white text-uppercase">Feb</li>
+                        <li class="font-16 text-white font-weight-600 border-bottom" th:text="${event3.day}"></li>
+                        <li class="font-12 text-white text-uppercase" th:text="${event3.month}"></li>
                       </ul>
                     </div>
                     <div class="media-body pl-15">
@@ -357,7 +400,7 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
+                  <p class="mt-10">This is a spoken english to converse in english fluently</p>
                   <div class="clearfix"></div>
                 </div>
               </article>

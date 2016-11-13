@@ -40,6 +40,13 @@ public class TrainingEvent {
 	
 	private byte[] eventPic;
 	
+	private String day;
+	
+	private String month;
+	
+	private String imageUrl;
+		
+	
 	public String getId() {
 		return id;
 	}
@@ -159,6 +166,30 @@ public class TrainingEvent {
 
 	public void setCaste(String caste) {
 		this.caste = caste;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 

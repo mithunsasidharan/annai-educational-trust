@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 
 <!-- Meta Tags -->
@@ -55,6 +56,25 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+<form action="/register" method="get" id="registerNow"></form>
+  <script type="text/javascript">
+  function register(){
+	  $('#registerNow').submit();
+  }
+  </script>
+  <form action="/login" method="get" id="loginNow"></form>
+  <script type="text/javascript">
+  function login(){
+	  $('#loginNow').submit();
+  }
+  </script>
+    <form action="/home" method="get" id="homeNow"></form>
+  <script type="text/javascript">
+  function home(){
+	  $('#homeNow').submit();
+  }
+  </script>
+  
 <body class="">
 <div id="wrapper" class="clearfix">
   <!-- Header -->
@@ -65,18 +85,48 @@
           <nav id="menuzord-right" class="menuzord default no-bg">
             <a class="menuzord-brand pull-left flip" href="index-mp-layout1.html" style="margin-right: 5px;"><img src="images/logo-wide.png" alt=""></a>
             <a class="menuzord-brand pull-left flip" style="color: white;">Women Empowerment</a>
-            <ul class="menuzord-menu onepage-nav">
-              <li class="active"><a href="home.html">Home</a></li>
+            <div th:unless="${session.authenticated}">		
+            <ul class="menuzord-menu onepage-nav pull-right">
+               <li><a href="#" onclick="javascript:home()">Home</a></li>
               <li><a href="#">Events</a></li>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="register.html">Register</a></li>
+              <li><a href="#" onclick="javascript:login()">Login</a></li>
+			  <li><a href="#" onclick="javascript:register()">Register</a></li>
             </ul>
+            </div>
+            <div th:if="${session.authenticated}">
+           		<ul class="menuzord-menu onepage-nav pull-right">
+            		<li class="active"><a href="#" onclick="javascript:home()">Home</a></li>
+					<li><a href="#">Events</a></li>
+					<!--  li><a href="#" onclick="javascript:login()">Profile</a></li>-->
+					<li><a href="#" onclick="javascript:profile()">Profile</a>
+					<li><a href="#" onclick="javascript:logout()">Logout</a></li>
+					
+				</ul>
+            </div>
           </nav>
         </div>
       </div>
     </div>
   </header>
   <!-- Start main-content -->
+  <form action="/home" method="get" id="home"></form>
+  <script type="text/javascript">
+  function home(){
+	  $('#home').submit();
+  }
+  </script>
+   <form action="/logout" method="get" id="logoutNow"></form>
+  <script type="text/javascript">
+  function logout(){
+	  $('#logoutNow').submit();
+  }
+  </script>
+  <form action="/profile" method="get" id="profileId"></form>
+  <script type="text/javascript">
+  function profile(){
+  	$('#profileId').submit();
+  }
+  </script>
   <div class="main-content">
 
     <!-- Section: inner-header -->
@@ -97,122 +147,36 @@
     <section>
       <div class="container pb-0">
         <div class="section-content">
-          <div class="row">
+         <div class="row" th:each="event : ${eventList}">
+       <!--   <div class="row"> -->
             <div class="col-sm-12 col-md-12 col-lg-12 mb-50">
               <div class="schedule-box maxwidth500 bg-lighter clearfix mb-30">
                 <div class="col-md-5">
                   <div class="thumb">
-                    <img class="img-fullwidth" alt="" src="images/gallery/5.jpg">
+                    <img class="img-fullwidth" alt="" th:src="${event.imageUrl}">
                   </div>
                 </div>
                 <div class="col-md-7">
                   <div class="schedule-details clearfix p-15 pt-30">
                     <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
                       <ul>
-                        <li class="font-24 text-white font-weight-600 border-bottom ">28</li>
-                        <li class="font-18 text-white text-uppercase">Feb</li>
+                        <li class="font-24 text-white font-weight-600 border-bottom" th:text="${event.day}"></li>
+                        <li class="font-18 text-white text-uppercase" th:text="${event.month}"></li>
                       </ul>
                     </div>
-                    <h3 class="title mt-0"><a href="#">Business Conferences 2016</a></h3>
+                    <h3 class="title mt-0" th:text="${event.eventName}"/></h3>
+                    <!--  <h3 class="title mt-0">Computer Training</h3> -->
                     <ul class="list-inline text-gray">
-                      <li><i class="fa fa-calendar mr-5"></i> Sundat at 9:30PM</li>
-                      <li><i class="fa fa-map-marker mr-5"></i> 89 Newyork City.</li>
+                      <li><i class="fa fa-calendar mr-5" th:text="${event.startDate}"></i></li>
+                      <li><i class="fa fa-map-marker mr-5"></i> Saastha Industries </li>
                     </ul>
                     <div class="clearfix"></div>
-                    <p class="mt-10">Charitable giving is the act of giving money, goods or time to the unfortunate, either directly or by means of a charitable trust or other worthy cause. Charitable giving as a religious act or duty is referred to as almsgiving or alms. The impoverished, particularly those widowed or orphaned,the ailing or injured, are generally regarded as the proper recipients of charity.</p>
+                    <p class="mt-10" th:text="${event.description}"></p>
                     <div class="mt-10">
-                     <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#">Register</a>
-                     <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-50">
-              <div class="schedule-box maxwidth500 bg-lighter clearfix mb-30">
-                <div class="col-md-5">
-                  <div class="thumb">
-                    <img class="img-fullwidth" alt="" src="images/gallery/2.jpg">
-                  </div>
-                </div>
-                <div class="col-md-7">
-                  <div class="schedule-details clearfix p-15 pt-30">
-                    <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
-                      <ul>
-                        <li class="font-24 text-white font-weight-600 border-bottom ">28</li>
-                        <li class="font-18 text-white text-uppercase">Feb</li>
-                      </ul>
-                    </div>
-                    <h3 class="title mt-0"><a href="#">Business Conferences 2016</a></h3>
-                    <ul class="list-inline text-gray">
-                      <li><i class="fa fa-calendar mr-5"></i> Sundat at 9:30PM</li>
-                      <li><i class="fa fa-map-marker mr-5"></i> 89 Newyork City.</li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    <p class="mt-10">Charitable giving is the act of giving money, goods or time to the unfortunate, either directly or by means of a charitable trust or other worthy cause. Charitable giving as a religious act or duty is referred to as almsgiving or alms. The impoverished, particularly those widowed or orphaned,the ailing or injured, are generally regarded as the proper recipients of charity.</p>
-                    <div class="mt-10">
-                     <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#">Register</a>
-                     <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-50">
-              <div class="schedule-box maxwidth500 bg-lighter clearfix mb-30">
-                <div class="col-md-5">
-                  <div class="thumb">
-                    <img class="img-fullwidth" alt="" src="images/gallery/3.jpg">
-                  </div>
-                </div>
-                <div class="col-md-7">
-                  <div class="schedule-details clearfix p-15 pt-30">
-                    <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
-                      <ul>
-                        <li class="font-24 text-white font-weight-600 border-bottom ">28</li>
-                        <li class="font-18 text-white text-uppercase">Feb</li>
-                      </ul>
-                    </div>
-                    <h3 class="title mt-0"><a href="#">Business Conferences 2016</a></h3>
-                    <ul class="list-inline text-gray">
-                      <li><i class="fa fa-calendar mr-5"></i> Sundat at 9:30PM</li>
-                      <li><i class="fa fa-map-marker mr-5"></i> 89 Newyork City.</li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    <p class="mt-10">Charitable giving is the act of giving money, goods or time to the unfortunate, either directly or by means of a charitable trust or other worthy cause. Charitable giving as a religious act or duty is referred to as almsgiving or alms. The impoverished, particularly those widowed or orphaned,the ailing or injured, are generally regarded as the proper recipients of charity.</p>
-                    <div class="mt-10">
-                     <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#">Register</a>
-                     <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-50">
-              <div class="schedule-box maxwidth500 bg-lighter clearfix mb-30">
-                <div class="col-md-5">
-                  <div class="thumb">
-                    <img class="img-fullwidth" alt="" src="images/gallery/4.jpg">
-                  </div>
-                </div>
-                <div class="col-md-7">
-                  <div class="schedule-details clearfix p-15 pt-30">
-                    <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
-                      <ul>
-                        <li class="font-24 text-white font-weight-600 border-bottom ">28</li>
-                        <li class="font-18 text-white text-uppercase">Feb</li>
-                      </ul>
-                    </div>
-                    <h3 class="title mt-0"><a href="#">Business Conferences 2016</a></h3>
-                    <ul class="list-inline text-gray">
-                      <li><i class="fa fa-calendar mr-5"></i> Sundat at 9:30PM</li>
-                      <li><i class="fa fa-map-marker mr-5"></i> 89 Newyork City.</li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    <p class="mt-10">Charitable giving is the act of giving money, goods or time to the unfortunate, either directly or by means of a charitable trust or other worthy cause. Charitable giving as a religious act or duty is referred to as almsgiving or alms. The impoverished, particularly those widowed or orphaned,the ailing or injured, are generally regarded as the proper recipients of charity.</p>
-                    <div class="mt-10">
-                     <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#">Register</a>
-                     <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
+                    <form action="/enroll" id="registerForm" method="get">
+                     <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#" onclick="javascript:enrollEvent()" >Enroll</a>
+                     	<input type="hidden" id="eventId" name="eventId" th:value="${eventList[0].id}"/>
+					</form>
                     </div>
                   </div>
                 </div>
@@ -226,6 +190,11 @@
   <!-- end main-content -->
   <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 </div>
+<script type="text/javascript">
+function enrollEvent(){
+	$('#registerForm').submit();
+}
+</script>
 <!-- end wrapper -->
 
 <!-- Footer Scripts -->
