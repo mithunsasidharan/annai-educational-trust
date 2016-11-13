@@ -65,6 +65,7 @@ public class UserController {
 					// TODO add check on password
 					session.setAttribute("authenticated", true);
 					session.setAttribute("adharId", user.getAadharNo());
+					session.setAttribute("role", user.getRole());
 					pageName = "redirect:home";
 				} else {
 					model.addAttribute("loginFailed", "Password IS Incorrect");
@@ -90,9 +91,11 @@ public class UserController {
 
 		// find the user
 		if (user != null && user.getAadharNo() != null) {
+			user.setRole("A");
 			userRepository.save(user);
 			session.setAttribute("authenticated", true);
 			session.setAttribute("adharId", user.getAadharNo());
+			session.setAttribute("role", "A");
 			System.out.println("User authenticated");
 			pageName = "redirect:home";
 

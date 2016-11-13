@@ -47,6 +47,7 @@ public class EventController {
 		event.setId(event.getEventName()+"_"+System.currentTimeMillis());
 		System.out.println("event"+event.getId());
 		eventRepository.save(event);
+		
 		return "redirect:allEvents";
 	}
 	
@@ -67,30 +68,48 @@ public class EventController {
 	@RequestMapping(value = "/enroll")
 
 	public String enroll(Model model, @RequestParam String eventId, HttpSession session) {
-
-		String adharId = (String) session.getAttribute("adharId");
-		System.out.println("Adhar ID is" + adharId);
 		
-		System.out.println("Event ID is" + eventId);
+		String admin = (String) session.getAttribute("role");
+		if(null != admin && admin.equals("A")){
+			TrainingEvent event = eventRepository.findOne(eventId);
+			List<User> userList = eventSearchRepository.findEligibleUsers(event);
+			model.addAttribute("userList", userList);
+			return "eligibleUsers";
+		}else{
+			
+			String adharId = (String) session.getAttribute("adharId");
+			System.out.println("Adhar ID is" + adharId);
+			
+			System.out.println("Event ID is" + eventId);
 
-		User user = userRepository.findOne(adharId);
+			User user = userRepository.findOne(adharId);
 
-		if (user.getEnrolledEvents() != null)
+			if (user.getEnrolledEvents() != null)
 
-		{
-			user.getEnrolledEvents().add(eventId);
-			userRepository.save(user);
+			{
+				user.getEnrolledEvents().add(eventId);
+				userRepository.save(user);
 
+			}
+			else {
+				List<String> enrolledEvents = new ArrayList<>();
+				enrolledEvents.add(eventId);
+				user.setEnrolledEvents(enrolledEvents);
+				userRepository.save(user);
+			}
+
+			return "redirect:allEvents";
+			
 		}
-		else {
-			List<String> enrolledEvents = new ArrayList<>();
-			enrolledEvents.add(eventId);
-			user.setEnrolledEvents(enrolledEvents);
-			userRepository.save(user);
-		}
 
-		return "redirect:allEvents";
-
+	}
+	
+	@RequestMapping(value = "/getEligibleUsers")
+	public String eligibleUsers(Model model,@RequestParam String eventId){
+		TrainingEvent event = eventRepository.findOne(eventId);
+		List<User> userList = eventSearchRepository.findEligibleUsers(event);
+		model.addAttribute("userList", userList);
+		return "eligibleUsers";
 	}
 
 }
