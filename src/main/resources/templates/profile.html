@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 
 <!-- Meta Tags -->
@@ -89,6 +90,12 @@
   	$('#profileId').submit();
   }
   </script>
+      <form action="/home" method="get" id="homeNow"></form>
+  <script type="text/javascript">
+  function home(){
+	  $('#homeNow').submit();
+  }
+  </script>
 <body class="">
 
 <div id="wrapper" class="clearfix">
@@ -102,7 +109,7 @@
             <a class="menuzord-brand pull-left flip" style="color: white;">Women Empowerment</a>
            	<div th:unless="${session.authenticated}">							
 								<ul class="menuzord-menu onepage-nav pull-right" >
-									<li class="active"><a href="#home">Home</a></li>
+								               <li><a href="#" onclick="javascript:home()">Home</a></li>
 									<li><a href="#blog">Events</a></li>
 									<li><a href="#" onclick="javascript:login()">Login</a></li>
 									<li><a href="#" onclick="javascript:register()">Register</a></li>
@@ -110,7 +117,7 @@
 							</div>
 							<div th:if="${session.authenticated}">
 								<ul class="menuzord-menu onepage-nav pull-right">
-									<li class="active"><a href="#home">Home</a></li>
+									               <li><a href="#" onclick="javascript:home()">Home</a></li>
 									<li><a href="#" onclick="javascript:allEvents()">Events</a></li>
 									<input type="hidden" th:value="${session.role}" id="role"></input>
 									<li><a href="#" id="addEventLink" onclick="javascript:addEvent()">Add Event</a></li>
@@ -124,95 +131,107 @@
     </div>
   </header>
   <!-- Start main-content -->
-  <div class="main-content">
+ <div class="main-content">
 
-    <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-stellar-background-ratio="0.5" data-bg-img="images/bg/bg5.jpg">
-      <div class="container pt-100 pb-50">
-        <!-- Section Content -->
-        <div class="section-content pt-100">
-          <div class="row"> 
-            <div class="col-md-12">
-              <h3 class="title text-white">Profile</h3>
-            </div>
-          </div>
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-stellar-background-ratio="0.5" data-bg-img="images/bg/bg5.jpg">
+                <div class="container pt-100 pb-50">
+                    <!-- Section Content -->
+                    <div class="section-content pt-100">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="title text-white">Profile</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section style="width: 0px;right: 250px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-push-3">
+                            <img style="float: right;height: 150px;border-radius: 50px;" src="images/team/1.jpg" border="0" alt="Deck">
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-md-push-3">
+                            <form name="login-form" class="clearfix">
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="name">Name</label>
+                                        Uma Shankar
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="bday">DOB</label>
+                                        10- Juanuary - 1992
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="male"><b>Gender</b>
+                                        </label>
+                                        Male
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="qualification">Educational Qualification</label>
+                                        10th Standard
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="location">Location</label>
+                                        Rural
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="phone">Phone No</label>
+                                        9003435364
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="adhar">Adhar No</label>
+                                        499118665246
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="income">Annual Income</label>
+                                        1,00,000
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="male"><b>Marital Status</b>
+                                        </label>
+                                        Single
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Upload Certificate</label>
+                                    <input name="form_attachment" class="file" type="file" multiple data-show-upload="false" data-show-caption="true">
+                                    <small>Maximum upload file size: 12 MB</small>
+                                </div>
+                                <div class="form-group">
+                                    <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                                    <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait..." style="width: 136px;">Upload</button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-    </section>
-<section>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-push-3">
-        <img style="float: right;height: 150px;border-radius: 50px;" src="http://i294.photobucket.com/albums/mm108/LandscapeTubes/Islands/Deck.png" border="0" alt="Deck">
-      </a>
-            <form name="login-form" class="clearfix">
-              <div class="row">
-                <div class="form-group col-md-12">
-                  <label for="name">Name</label>
-                  Uma Shankar
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-12">
-                  <label for="bday">DOB</label>
-            10- Juanuary - 1992
-          
-                      </div>
-              </div>
-        <div class="row">
-                <div class="form-group col-md-12">
-                <label for="male"><b>Gender</b></label>
-        Male
-              </div>
-        </div>
-        <div class="row">
-                <div class="form-group col-md-12">
-                  <label for="qualification">Educational Qualification</label>
-                  10th Standard
-                </div>
-              </div>
-        <div class="row">
-                <div class="form-group col-md-12">
-                  <label for="location">Location</label>
-                  Rural
-                </div>
-              </div>
-        
-        <div class="row">
-                <div class="form-group col-md-12">
-                  <label for="phone">Phone No</label>
-                  9003435364
-                </div>
-        <br>
-              </div>
-        <div class="row">
-                <div class="form-group col-md-12">
-                  <label for="adhar">Adhar No</label>
-                  499118665246
-                </div>
-              </div>
-        <div class="row">
-                <div class="form-group col-md-12">
-                  <label for="income">Annual Income</label>
-                  1,00,000
-                </div>
-              </div>
-        <div class="row">
-                <div class="form-group col-md-12">
-                <label for="male"><b>Marital Status</b></label>
-        Single
-              </div>
-        </div>
-              
-              <div class="form-group pull-right mt-10">
-                <button type="submit" class="btn btn-dark btn-sm">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-dark btn-sm">Cancel</button>
-              </div>
-              
-              
-            </form>
-          </div>
-        </div>
-      </div>
     </section>
   </div>
   <!-- end main-content -->

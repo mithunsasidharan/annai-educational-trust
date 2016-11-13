@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 
 <!-- Meta Tags -->
@@ -48,190 +48,241 @@
 <!-- JS | jquery plugin collection for this theme -->
 <script src="js/jquery-plugin-collection.js"></script>
 </head>
+<form action="/login" method="get" id="loginNow"></form>
+  <script type="text/javascript">
+  function login(){
+	  $('#loginNow').submit();
+  }
+  $(document).ready(function(){
+	  var role = $("#role").val();
+	  //alert(role);
+	  if(role == 'A'){
+		  $("#addEventLink").show();
+	  } else {
+		  $("#addEventLink").hide();
+	  }
+  });
+  </script>
+<form action="/register" method="get" id="registerNow"></form>
+  <script type="text/javascript">
+  function register(){
+	  $('#registerNow').submit();
+  }
+  </script>
+  
+  <form action="/logout" method="get" id="logoutNow"></form>
+  <script type="text/javascript">
+  function logout(){
+	  $('#logoutNow').submit();
+  }
+  </script>
+  
+    <form action="/addEvent" method="get" id="addEventNow"></form>
+  <script type="text/javascript">
+  function addEvent(){
+	  $('#addEventNow').submit();
+  }
+  </script>
+  
+ 
+ <form action="/allEvents" method="get" id="allEventsNow"></form>
+  <script type="text/javascript">
+  function allEvents(){
+	  $('#allEventsNow').submit();
+  }
+  </script>
+  <form action="/profile" method="get" id="profileId"></form>
+  <script type="text/javascript">
+  function profile(){
+  	$('#profileId').submit();
+  }
+  </script>
+        <form action="/home" method="get" id="homeNow"></form>
+  <script type="text/javascript">
+  function home(){
+	  $('#homeNow').submit();
+  }
+  </script>
+  
 <body style="background: black">
 <div id="wrapper" class="clearfix">
-  <!-- preloader -->
- <!-- <div id="preloader">
-    <div id="spinner">
-      <img class="floating" src="images/preloaders/13.png" alt="">
-      <h5 class="line-height-50 font-18 ml-15">Loading...</h5>
+  <header id="header" class="header">
+    <div class="header-nav navbar-fixed-top header-dark navbar-white navbar-transparent bg-transparent-1 navbar-sticky-animated animated-active">
+      <div class="header-nav-wrapper">
+        <div class="container">
+          <nav id="menuzord-right" class="menuzord default no-bg">
+            <a class="menuzord-brand pull-left flip" href="index-mp-layout1.html" style="margin-right: 5px;"><img src="images/logo-wide.png" alt=""></a>
+            <a class="menuzord-brand pull-left flip" style="color: white;">Annai Educational Trust</a>
+							<div th:unless="${session.authenticated}">							
+								<ul class="menuzord-menu onepage-nav pull-right" >
+									<li><a href="#" onclick="javascript:home()">Home</a></li>
+									<li><a href="#" onclick="javascript:login()">Login</a></li>
+									<li><a href="#" onclick="javascript:register()">Register</a></li>
+								</ul>
+							</div>
+							<div th:if="${session.authenticated}">
+								<ul class="menuzord-menu onepage-nav pull-right">
+									<li><a href="#" onclick="javascript:home()">Home</a></li>
+									<li><a href="#" onclick="javascript:profile()">Profile</a>
+									<li><a href="#" onclick="javascript:logout()">Logout</a></li>
+								</ul>
+							</div>
+          </nav>
+        </div>
+      </div>
     </div>
-    <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
-  </div>-->
-	<!-- Start main-content -->
-	<div class="main-content">
-	<div class="display-table">
+  </header>
+
+  <!-- Start main-content -->
+  <div class="main-content">
+    <!-- Section: home -->
+    <!-- <section id="home" class="divider parallax fullscreen layer-overlay overlay-dark-9" data-bg-img="images/bg/bg1.jpg"> -->
+      <div class="display-table">
         <div class="display-table-cell">
-		<div class="container">
-			<div class="row">
+          <div class="container">
+            <div class="row">
               <div class="col-md-6 col-md-push-3">
-                <div class="text-center mb-60"><a href="#" class=""><img alt="" src="images/logo-wide.png"></a></div>
-                <form id= "reg" name="reg-form" class="register-form form-transparent" method="post" action="/register">
-							<div class="icon-box mb-0 p-0">
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+                <!-- <div class="text-center mb-60"><a href="#" class=""><img alt="" src="images/logo-wide.png"></a></div> -->
+                <form id= "register_form" name="reg-form" class="register-form form-transparent" method="post" action="/register">
+                  <div class="icon-box mb-0 p-0">
                     <h4 class="text-theme-colored pt-10 mt-0 mb-30">Don't have an Account? Register Now.</h4>
-							</div>
-							<p class="text-gray">All the fields are mandatory.</p>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_fisrt_name">First Name</label> <input
-										name="firstName" id="firstName" class="form-control"
-										type="text"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_last_name">Last Name</label> <input
-										name="lastName" id="lastName" class="form-control"
-										type="text"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_Adhar_No">Enter Adhar No</label> <input
-										id="aadharNo" name="aadharNo" class="form-control"
-										type="text"/>
-								</div>
-							</div>
-						 	<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_choose_password">Choose Password</label> <input
-										id="password" name="password" class="form-control"
-										type="password"/>
-								</div>
-								<div class="form-group col-md-6">
-									<label>Re-enter Password</label> <input id="confirmPassword"
-										name="confirmPassword" class="form-control"
-										type="password"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_dob">Birthday</label> <input id="dob"
-										name="dob" class="form-control" type="date"/>
-								</div>
-							</div>
- 							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_address">Address</label>
-									<input id="address" name="address"
-										class="form-control" 
-										placeholder="Enter Address" type="text"/>
-								</div>
-							</div> 
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_telephone">Telephone Number</label> <input
-										id="phoneNo" name="phoneNo" class="form-control"
-										type="text"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_category">Category</label> <select
-										class="form-control" id="caste" name="caste">
-										<option>General</option>
-										<option>OBC</option>
-										<option>ST</option>
-										<option>SC</option>
-									</select>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_gender">Select Gender</label> <select
-										class="form-control" id="gender" name="gender">
-										<option>Male</option>
-										<option>Female</option>
-									</select>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_qualification">Qualification</label> <input
-										id="qualification" name="qualification"
-										class="form-control" type="text"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_income">Annual Income</label> <input
-										id="annualIncome" name="annualIncome"
-										class="form-control" type="number" min="0"/>
-								</div>
-							</div> 
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_marital_status">Marital Status</label> <select
-										class="form-control" id="maritalStatus"
-										name="maritalStatus">
-										<option>Unmarried</option>
-										<option>Married</option>
-										<option>Widow</option>
-									</select>
-								</div>
-							</div>
- 							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_children">No of Children</label> <input
-										id="noOfChildren" name="noOfChildren"
-										class="form-control" type="number" min="0"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-6">
-									<label for="form_area">Select Area</label> <select
-										class="form-control" id="isRural" name="isRural">
-										<option>Rural</option>
-										<option>Urban</option>
-									</select>
-								</div>
-							</div> 
-							<div class="form-group">
-								<button class="btn btn-theme-colored btn-lg btn-block mt-15" type="submit">Register Now</button>
-							</div>
-						</form>
-						
-<!-- <script>  
-$("#reg").validate({
- submitHandler: function(form) {
-   var form_btn = $(form).find('button[type="submit"]');
-   var form_result_div = '#form-result';
-   $(form_result_div).remove();
-   form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-   var form_btn_old_msg = form_btn.html();
-   form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-   $(form).ajaxSubmit({
-     dataType:  'json',
-     success: function(data) {
-       if( data.status == 'true' ) {
-         $(form).find('.form-control').val('');
-       }
-       form_btn.prop('disabled', false).html(form_btn_old_msg);
-       $(form_result_div).html(data.message).fadeIn('slow');
-       setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
-     }
-   });
- }
-});
-</script> -->
-<script>
-    $(function(){           
-        if (!Modernizr.inputtypes.date) {
-        // If not native HTML5 support, fallback to jQuery datePicker
-            $('input[type=date]').datepicker({
-                // Consistent format with the HTML5 picker
-                    dateFormat : 'yy-mm-dd'
-                },
-                // Localization
-                $.datepicker.regional['it']
-            );
-        }
-    });
-</script>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                  </div>
+                  <p class="text-gray">All the fields are mandatory.</p>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label>First Name</label>
+                      <input name="firstName" class="form-control" id="firstName" type="text">
+                    </div>
+                <div class="form-group col-md-6">
+                  <label for="form_last_name">Last Name</label> <input
+                    name="lastName" id="lastName" class="form-control"
+                    type="text"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_Adhar_No">Enter Adhar No</label> <input
+                    id="aadharNo" name="aadharNo" class="form-control"
+                    type="text"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_choose_password">Choose Password</label> <input
+                    id="password" name="password" class="form-control"
+                    type="password"/>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Re-enter Password</label> <input id="confirmPassword"
+                    name="confirmPassword" class="form-control"
+                    type="password"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_dob">Birthday</label> <input id="dob"
+                    name="dob" class="form-control" type="date"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_address">Address</label>
+                  <input id="address" name="address"
+                    class="form-control" type="text" 
+                    placeholder="Enter Address"/>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_telephone">Telephone Number</label> <input
+                    id="phoneNo" name="phoneNo" class="form-control"
+                    type="text"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_category">Category</label> <select
+                    class="form-control" id="caste" name="caste">
+                    <option>General</option>
+                    <option>OBC</option>
+                    <option>SC/ST</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_gender">Select Gender</label> <select
+                    class="form-control" id="gender" name="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_qualification">Qualification</label> <input
+                    id="qualification" name="qualification"
+                    class="form-control" type="text"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_income">Annual Income</label> <input
+                    id="annualIncome" name="annualIncome"
+                    class="form-control" type="number"/>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_marital_status">Marital Status</label> <select
+                    class="form-control" id="maritalStatus"
+                    name="maritalStatus">
+                    <option>Unmarried</option>
+                    <option>Married</option>
+                    <option>Widow</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_children">No of Children</label> <input
+                    id="noOfChildren" name="noOfChildren"
+                    class="form-control" type="number"/>
+                </div>
+              </div>
+                            <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="form_area">Select Area</label> <select
+                    class="form-control" id="isRural" name="isRural">
+                    <option>Rural</option>
+                    <option>Urban</option>
+                  </select>
+                </div>
+              </div> 
+                  <div class="form-group">
+                    <button class="btn btn-theme-colored btn-lg btn-block mt-15" type="submit">Register Now</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </section> -->
+  </div>
+  <!-- end main-content -->
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- end wrapper -->
+
+<!-- Footer Scripts -->
+<!-- JS | Custom script for all pages -->
+<script src="js/custom.js"></script>
+
 </body>
 </html>

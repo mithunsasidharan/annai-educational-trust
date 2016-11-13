@@ -36,6 +36,14 @@ public class UserController {
 		
 		//Load data of upcoming events
 		List<TrainingEvent> upcomimgEvents = getUpComingEvents();
+		
+		if(upcomimgEvents==null){
+			upcomimgEvents = new ArrayList<TrainingEvent>();
+			upcomimgEvents.add(new TrainingEvent());
+			upcomimgEvents.add(new TrainingEvent());
+			upcomimgEvents.add(new TrainingEvent());
+		}
+
 		int count =1 ;
 		for(TrainingEvent event: upcomimgEvents){
 			if (event.getStartDate() != null) {
@@ -46,6 +54,7 @@ public class UserController {
 			model.addAttribute("event" + count, event);
 			count++;
 		}
+		
 
 		return "home";
 	}
@@ -53,6 +62,16 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(Model model, HttpSession session) {
 		return "login";
+	}
+	
+	@RequestMapping("/calendar")
+	public String calendar(Model model, HttpSession session) {
+		return "calendar";
+	}
+	
+	@RequestMapping("/users")
+	public String users(Model model, HttpSession session) {
+		return "users";
 	}
 
 	@RequestMapping("/logout")
@@ -103,7 +122,7 @@ public class UserController {
 
 		// find the user
 		if (user != null && user.getAadharNo() != null) {
-			user.setRole("A");
+			//user.setRole("U");
 			userRepository.save(user);
 			session.setAttribute("authenticated", true);
 			session.setAttribute("adharId", user.getAadharNo());
