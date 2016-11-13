@@ -48,6 +48,7 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String logout(Model model, HttpSession session) {
 		session.setAttribute("authenticated", false);
+		session.setAttribute("userName", null);
 		return "redirect:home";
 	}
 
@@ -61,11 +62,12 @@ public class UserController {
 			User userFound = userRepository.findOne(user.getAadharNo());
 			if (userFound != null) {
 				if (userFound.getPassword().equals(user.getPassword())) {
-					System.out.println(userFound.toString());
+					System.out.println("user role :"+userFound.getRole());
 					// TODO add check on password
 					session.setAttribute("authenticated", true);
 					session.setAttribute("adharId", user.getAadharNo());
-					session.setAttribute("role", user.getRole());
+					session.setAttribute("role", userFound.getRole());
+					session.setAttribute("userName", userFound.getFirstName());
 					pageName = "redirect:home";
 				} else {
 					model.addAttribute("loginFailed", "Password IS Incorrect");
@@ -122,7 +124,13 @@ public class UserController {
 		List<TrainingEvent> upComingEvents = eventSearchRepository.findUpcomingEvents();
 		return upComingEvents;
 	}
+	
+	
+	@RequestMapping(value = "/profile")
+	public String profile(Model model, HttpSession session) {
+		return "profile";
 
+	}
 
 
 }

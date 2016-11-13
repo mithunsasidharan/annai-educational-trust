@@ -68,7 +68,7 @@ public class EventController {
 	@RequestMapping(value = "/enroll")
 
 	public String enroll(Model model, @RequestParam String eventId, HttpSession session) {
-		
+		System.out.println("Event Id : "+eventId);
 		String admin = (String) session.getAttribute("role");
 		if(null != admin && admin.equals("A")){
 			TrainingEvent event = eventRepository.findOne(eventId);
