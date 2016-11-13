@@ -122,7 +122,10 @@
                     <div class="clearfix"></div>
                     <p class="mt-10">Charitable giving is the act of giving money, goods or time to the unfortunate, either directly or by means of a charitable trust or other worthy cause. Charitable giving as a religious act or duty is referred to as almsgiving or alms. The impoverished, particularly those widowed or orphaned,the ailing or injured, are generally regarded as the proper recipients of charity.</p>
                     <div class="mt-10">
-                     <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#" onclick="javascript:enrollEvent('${event.eventId}'')" >Register</a>
+                    <form action="/enroll" id="registerForm" method="get">
+                     <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="#" onclick="javascript:enrollEvent()" >Register</a>
+                     	<input type="hidden" id="eventId" name="eventId" th:value="${event.id}"/>
+					</form>
                      <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
                     </div>
                   </div>
@@ -137,12 +140,8 @@
   <!-- end main-content -->
   <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 </div>
-<form action="/enroll" id="registerForm" method="get">
-	<input type="hidden" id="eventId" name="eventId"/>
-</form>
 <script type="text/javascript">
-function enrollEvent(eventId){
-	$('#eventId').val(eventId);
+function enrollEvent(){
 	$('#registerForm').submit();
 }
 </script>

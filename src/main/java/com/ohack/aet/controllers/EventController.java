@@ -2,7 +2,8 @@ package com.ohack.aet.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class EventController {
 	UserMongoRepository userRepository;
 	
 	@RequestMapping("/allEvents")
-	public String event(Model model) {
+	public String event(Model model, HttpSession session) {
 		System.out.println("coming here ");
 		Iterable<TrainingEvent> events = eventRepository.findAll();
 		System.out.println("Events in console :"+events);
@@ -41,7 +42,7 @@ public class EventController {
 	}
 	
 	@RequestMapping(value = "/addEvent", method = RequestMethod.POST)
-	public String addEvent(@ModelAttribute TrainingEvent event,BindingResult bindingResult) {
+	public String addEvent(@ModelAttribute TrainingEvent event,BindingResult bindingResult, HttpSession session) {
 		System.out.println(event.getEventName()+"_"+System.currentTimeMillis());
 		event.setId(event.getEventName()+"_"+System.currentTimeMillis());
 		System.out.println("event"+event.getId());
@@ -65,13 +66,14 @@ public class EventController {
 	
 	@RequestMapping(value = "/enroll")
 
-	public String enroll(Model model, @RequestParam String eventId) {
+	public String enroll(Model model, @RequestParam String eventId, HttpSession session) {
 
-		Map<String, Object> modelMap = model.asMap();
+		String adharId = (String) session.getAttribute("adharId");
+		System.out.println("Adhar ID is" + adharId);
+		
+		System.out.println("Event ID is" + eventId);
 
-		String userId = (String) modelMap.get("adharID");
-
-		User user = userRepository.findOne(userId);
+		User user = userRepository.findOne(adharId);
 
 		if (user.getEnrolledEvents() != null)
 
@@ -83,6 +85,7 @@ public class EventController {
 		else {
 			List<String> enrolledEvents = new ArrayList<>();
 			enrolledEvents.add(eventId);
+			user.setEnrolledEvents(enrolledEvents);
 			userRepository.save(user);
 		}
 
