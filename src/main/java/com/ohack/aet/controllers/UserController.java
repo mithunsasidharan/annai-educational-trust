@@ -3,6 +3,8 @@ package com.ohack.aet.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +26,9 @@ public class UserController {
 	@Autowired
 	EventSearchMongoRepository eventSearchRepository;
 
+
 	@RequestMapping("/home")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
 		
 		//Load data of upcoming events
 		List<TrainingEvent> upcomimgEvents = getUpComingEvents();
@@ -38,18 +41,18 @@ public class UserController {
 	}
 
 	@RequestMapping("/login")
-	public String login(Model model) {
+	public String login(Model model, HttpSession session) {
 		return "login";
 	}
 
 	@RequestMapping("/logout")
-	public String logout(Model model) {
-		model.addAttribute("authenticated", false);
-		return "home";
+	public String logout(Model model, HttpSession session) {
+		session.setAttribute("authenticated", false);
+		return "redirect:home";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(Model model, @ModelAttribute User user) {
+	public String login(Model model, @ModelAttribute User user, HttpSession session) {
 
 		String pageName = "login";
 
@@ -60,8 +63,8 @@ public class UserController {
 				if (userFound.getPassword().equals(user.getPassword())) {
 					System.out.println(userFound.toString());
 					// TODO add check on password
-					model.addAttribute("authenticated", true);
-					pageName = "home";
+					session.setAttribute("authenticated", true);
+					pageName = "redirect:home";
 				} else {
 					model.addAttribute("loginFailed", "Password IS Incorrect");
 				}
@@ -79,7 +82,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(Model model, @ModelAttribute User user) {
+	public String register(Model model, @ModelAttribute User user, HttpSession session) {
 
 		List<String> errorMsg = new ArrayList<String>();
 		String pageName = "register";
@@ -87,10 +90,10 @@ public class UserController {
 		// find the user
 		if (user != null && user.getAadharNo() != null) {
 			userRepository.save(user);
-			model.addAttribute("authenticated", true);
+			session.setAttribute("authenticated", true);
 
 			System.out.println("User authenticated");
-			pageName = "home";
+			pageName = "redirect:home";
 
 		} else {
 
@@ -104,7 +107,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register")
-	public String register(Model model) {
+	public String register(Model model, HttpSession session) {
 
 		return "register";
 
@@ -115,5 +118,7 @@ public class UserController {
 		List<TrainingEvent> upComingEvents = eventSearchRepository.findUpcomingEvents();
 		return upComingEvents;
 	}
+
+
 
 }

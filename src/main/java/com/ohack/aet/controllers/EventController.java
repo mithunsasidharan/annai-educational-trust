@@ -1,6 +1,8 @@
 package com.ohack.aet.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ohack.aet.model.TrainingEvent;
+import com.ohack.aet.model.User;
 import com.ohack.aet.repository.EventMongoRepository;
 import com.ohack.aet.repository.EventSearchMongoRepository;
 import com.ohack.aet.repository.UserMongoRepository;
@@ -59,6 +63,31 @@ public class EventController {
     }
 	
 	
+	@RequestMapping(value = "/enroll")
 
+	public String enroll(Model model, @RequestParam String eventId) {
+
+		Map<String, Object> modelMap = model.asMap();
+
+		String userId = (String) modelMap.get("adharID");
+
+		User user = userRepository.findOne(userId);
+
+		if (user.getEnrolledEvents() != null)
+
+		{
+			user.getEnrolledEvents().add(eventId);
+			userRepository.save(user);
+
+		}
+		else {
+			List<String> enrolledEvents = new ArrayList<>();
+			enrolledEvents.add(eventId);
+			userRepository.save(user);
+		}
+
+		return "redirect:allEvents";
+
+	}
 
 }
