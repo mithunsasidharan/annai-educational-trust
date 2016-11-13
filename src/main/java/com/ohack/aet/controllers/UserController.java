@@ -1,6 +1,9 @@
 package com.ohack.aet.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ohack.aet.model.TrainingEvent;
 import com.ohack.aet.model.User;
+
 import com.ohack.aet.repository.EventSearchMongoRepository;
 import com.ohack.aet.repository.UserMongoRepository;
 
@@ -34,9 +38,15 @@ public class UserController {
 		List<TrainingEvent> upcomimgEvents = getUpComingEvents();
 		int count =1 ;
 		for(TrainingEvent event: upcomimgEvents){
+			if (event.getStartDate() != null) {
+				Calendar cal = toCalendar(event.getStartDate());
+				event.setMonth(new SimpleDateFormat("MMM").format(cal.getTime()));
+				event.setDay(String.valueOf(cal.get(Calendar.DAY_OF_MONTH)));
+			}
 			model.addAttribute("event" + count, event);
 			count++;
 		}
+
 		return "home";
 	}
 
@@ -97,7 +107,8 @@ public class UserController {
 			userRepository.save(user);
 			session.setAttribute("authenticated", true);
 			session.setAttribute("adharId", user.getAadharNo());
-			session.setAttribute("role", "A");
+			session.setAttribute("userName", user.getFirstName());
+//			session.setAttribute("role", "A");
 			System.out.println("User authenticated");
 			pageName = "redirect:home";
 
@@ -132,5 +143,11 @@ public class UserController {
 
 	}
 
+	
+	public Calendar toCalendar(Date date){ 
+		  Calendar cal = Calendar.getInstance();
+		  cal.setTime(date);
+		  return cal;
+		}
 
 }

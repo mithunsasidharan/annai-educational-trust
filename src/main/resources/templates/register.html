@@ -1,41 +1,75 @@
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html dir="ltr" lang="en">
 <head>
-<title>Bootstrap Case</title>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<!-- external javascripts -->
+
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="ngopress - Nonprofit, Crowdfunding & Charity HTML5 Template" />
+<meta name="keywords" content="charity,crowdfunding,nonprofit,orphan,Poor,funding,fundrising,ngo,children" />
+<meta name="author" content="ThemeMascot" />
+
+<!-- Page Title -->
+<title>Annai Educational Trust</title>
+
+<!-- Favicon and Touch Icons -->
+<link href="images/favicon.png" rel="shortcut icon" type="image/png">
+<link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+<link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+<link href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+
+<!-- Stylesheet -->
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+<link href="css/css-plugin-collections.css" rel="stylesheet"/>
+<!-- CSS | menuzord megamenu skins -->
+<link id="menuzord-menu-skins" href="css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet"/>
+<!-- CSS | Main style file -->
+<link href="css/style-main.css" rel="stylesheet" type="text/css">
+<!-- CSS | Preloader Styles -->
+<link href="css/preloader.css" rel="stylesheet" type="text/css">
+<!-- CSS | Custom Margin Padding Collection -->
+<link href="css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+<!-- CSS | Responsive media queries -->
+<link href="css/responsive.css" rel="stylesheet" type="text/css">
+<!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+<!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
+
+<!-- CSS | Theme Color -->
+<link href="css/colors/theme-skin-blue.css" rel="stylesheet" type="text/css">
+
+<!-- external javascripts -->
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- JS | jquery plugin collection for this theme -->
 <script src="js/jquery-plugin-collection.js"></script>
 </head>
-<body>
+<body style="background: black">
+<div id="wrapper" class="clearfix">
+  <!-- preloader -->
+ <!-- <div id="preloader">
+    <div id="spinner">
+      <img class="floating" src="images/preloaders/13.png" alt="">
+      <h5 class="line-height-50 font-18 ml-15">Loading...</h5>
+    </div>
+    <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
+  </div>-->
 	<!-- Start main-content -->
 	<div class="main-content">
+	<div class="display-table">
+        <div class="display-table-cell">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-
-					<div class="tab-pane fade in p-15" id="register-tab">
-						<form action="/register" method="POST" name="reg" class="reg" id="reg">
+              <div class="col-md-6 col-md-push-3">
+                <div class="text-center mb-60"><a href="#" class=""><img alt="" src="images/logo-wide.png"></a></div>
+                <form id= "reg" name="reg-form" class="register-form form-transparent" method="post" action="/register">
 							<div class="icon-box mb-0 p-0">
-								<a href="#"
-									class="icon icon-bordered icon-rounded icon-sm pull-left mb-0 mr-10">
-									<i class="pe-7s-users"></i>
-								</a>
-								<h4 class="text-gray pt-10 mt-0 mb-30">Don't have an
-									Account? Register Now.</h4>
+                    <h4 class="text-theme-colored pt-10 mt-0 mb-30">Don't have an Account? Register Now.</h4>
 							</div>
-							<hr/>
 							<p class="text-gray">All the fields are mandatory.</p>
 							<div class="row">
 								<div class="form-group col-md-6">
@@ -98,7 +132,7 @@
 										<option>General</option>
 										<option>OBC</option>
 										<option>ST</option>
-										<option>ST</option>
+										<option>SC</option>
 									</select>
 								</div>
 							</div>
@@ -153,8 +187,7 @@
 								</div>
 							</div> 
 							<div class="form-group">
-								<button class="btn btn-dark btn-lg btn-block mt-15"
-									type="submit">Register Now</button>
+								<button class="btn btn-theme-colored btn-lg btn-block mt-15" type="submit">Register Now</button>
 							</div>
 						</form>
 						
